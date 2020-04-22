@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listOfItemsFragment">
+
+    <fragment
+        android:id="@+id/listOfItemsFragment"
+        android:name="com.alexaat.stocktracker.fragments.ListOfItemsFragment"
+        android:label="@string/list_of_items_fragment_title"
+        tools:layout="@layout/fragment_list_of_items">
+
+        <action
+            android:id="@+id/action_listOfItemsFragment_to_newItemFragment"
+            app:destination="@id/newItemFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/newItemFragment"
+        android:name="com.alexaat.stocktracker.fragments.NewItemFragment"
+        android:label="@string/new_item_fragment_title"
+        tools:layout="@layout/fragment_new_item">
+
+        <action
+            android:id="@+id/action_newItemFragment_to_listOfItemsFragment"
+            app:destination="@id/listOfItemsFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/listOfItemsFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="itemId"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/rulesFragment"
+        android:name="com.alexaat.stocktracker.fragments.RulesFragment"
+        android:label="@string/rules_fragment_title"
+        tools:layout="@layout/fragment_rules" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.alexaat.stocktracker.fragments.AboutFragment"
+        android:label="@string/about_fragment_title"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/stockOverviewFragment"
+        android:name="com.alexaat.stocktracker.fragments.StockOverviewFragment"
+        android:label="@string/stock_overview_fragment_title"
+        tools:layout="@layout/fragment_stock_overview" >
+        <action
+            android:id="@+id/action_stockOverviewFragment_to_newItemFragment"
+            app:destination="@id/newItemFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/listOfItemsFragment" />
+    </fragment>
+</navigation>

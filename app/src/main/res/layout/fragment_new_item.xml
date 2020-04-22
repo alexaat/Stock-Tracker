@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="stockItem"
+            type="com.alexaat.stocktracker.database.StockItem"/>
+        <variable
+            name="viewModel"
+            type="com.alexaat.stocktracker.viewmodels.NewItemFragmentViewModel" />
+    </data>
+
+
+    <ScrollView
+        android:id="@+id/new_item_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:orientation="vertical"
+        android:padding="@dimen/small_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fragment_new_item_constraint_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".fragments.NewItemFragment">
+
+            <ImageView
+                android:id="@+id/item_icon"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:contentDescription="@string/item_details_icon_content_description"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_add_a_photo"
+                app:icon_uri_binding="@{stockItem}"
+                android:onClick="@{()->viewModel.launchCamera()}"/>
+
+
+            <ImageView
+                android:id="@+id/item_bar_code_image"
+                android:layout_width="128dp"
+                android:layout_height="0dp"
+                android:contentDescription="@string/item_details_bar_code_image_content_description"
+                app:layout_constraintBottom_toTopOf="@+id/item_bar_code_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_add_barcode"
+                app:new_item_bar_code_icon_binding="@{stockItem}"
+                android:onClick="@{() -> viewModel.launchBarCodeScanner()}"/>
+
+
+            <TextView
+                android:id="@+id/item_bar_code_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/item_icon"
+                app:layout_constraintEnd_toEndOf="@+id/item_bar_code_image"
+                app:layout_constraintStart_toStartOf="@+id/item_bar_code_image"
+                tools:text="123456789"
+                app:new_item_bar_code_text_binding="@{stockItem}"/>
+
+            <TextView
+                android:id="@+id/new_item_fragment_item_stock_code_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/stock_code_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/item_icon" />
+
+
+            <EditText
+                android:id="@+id/item_stock_code_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/item_stock_code"
+                android:inputType="textPersonName"
+                android:autofillHints="@string/enter_stock_code_here"
+                app:new_item_stock_code_binding="@{stockItem}"
+                app:new_item_stock_code_binding_text_change_listener="@{viewModel}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/new_item_fragment_item_stock_code_label"/>
+
+
+            <TextView
+                android:id="@+id/new_item_fragment_item_name_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/item_name_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/item_stock_code_edit" />
+
+
+            <EditText
+                android:id="@+id/item_name_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/item_name"
+                android:autofillHints="@string/enter_item_name_here"
+                android:inputType="textPersonName"
+                app:new_item_stock_item_name ="@{stockItem}"
+                app:new_item_name_binding_text_change_listener="@{viewModel}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/new_item_fragment_item_name_label" />
+
+
+            <TextView
+                android:id="@+id/new_item_fragment_item_description_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/description_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/item_name_edit" />
+
+
+            <EditText
+                android:id="@+id/item_description_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="@string/item_description"
+                android:autofillHints="@string/enter_item_description_here"
+                android:inputType="textMultiLine"
+                app:new_item_stock_item_description="@{stockItem}"
+                app:new_item_description_binding_text_change_listener="@{viewModel}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/new_item_fragment_item_description_label" />
+
+
+            <TextView
+                android:id="@+id/new_item_fragment_number_of_items_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/number_of_items_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/item_description_edit"/>
+
+
+            <EditText
+                android:id="@+id/number_of_items_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/number_of_items"
+                android:autofillHints="@string/enter_number_of_items_here"
+                android:inputType="numberDecimal"
+                app:new_item_number_of_items="@{stockItem}"
+                app:new_item_number_of_items_binding_text_change_listener="@{viewModel}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/new_item_fragment_number_of_items_label" />
+
+
+            <TextView
+                android:id="@+id/new_item_fragment_price_per_item_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/price_per_item_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/number_of_items_edit" />
+
+            <EditText
+                android:id="@+id/price_per_item_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/price_per_item"
+                android:autofillHints="@string/enter_price_per_item_here"
+                android:inputType="numberDecimal"
+                app:new_item_price_per_item="@{stockItem}"
+                app:new_item_price_per_items_binding_text_change_listener="@{viewModel}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/new_item_fragment_price_per_item_label" />
+
+
+            <Button
+                android:id="@+id/save_item_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/save_item"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/price_per_item_edit"
+                android:onClick="@{()->viewModel.onSaveButtonClicked()}"/>
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
+
+</layout>

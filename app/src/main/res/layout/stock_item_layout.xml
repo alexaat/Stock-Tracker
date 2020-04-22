@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+         <variable
+            name="stockItem"
+            type="com.alexaat.stocktracker.database.StockItem" />
+
+        <variable
+            name="stockItemClickListener"
+            type="com.alexaat.stocktracker.adapters.StockItemClickListener" />
+
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="@dimen/extra_small_margin"
+    android:layout_marginLeft="@dimen/extra_small_margin"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp"
+    android:padding="@dimen/extra_small_margin"
+    android:background="@drawable/item_border"
+    android:id="@+id/stock_item_layout_constraintlayout"
+    android:onClick="@{()->stockItemClickListener.onClick(stockItem)}">
+
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:contentDescription="@string/stock_item_layout_icon_content_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_broken_image_24dp"
+        app:icon_uri_binding="@{stockItem}"/>
+
+    <TextView
+        android:id="@+id/layout_item_stock_code_text"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/extra_small_margin"
+        android:textSize="@dimen/medium_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/layout_stock_item_name_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_item_stock_code_label"
+        app:stock_code_binding="@{stockItem}"
+        tools:text="stock code" />
+
+    <TextView
+        android:id="@+id/layout_stock_item_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/extra_small_margin"
+        android:textSize="@dimen/medium_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/layout_stock_item_description_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_stock_item_name_label"
+        app:item_name_binding="@{stockItem}"
+        tools:text="item name" />
+
+    <TextView
+        android:id="@+id/layout_stock_item_description_text"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/extra_small_margin"
+        android:textSize="@dimen/medium_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/layout_price_per_item_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_stock_item_description_label"
+        app:item_description_binding="@{stockItem}"
+        tools:text="description" />
+
+    <TextView
+        android:id="@+id/layout_price_per_item_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/small_margin"
+        android:layout_marginRight="@dimen/small_margin"
+        android:textSize="@dimen/medium_text_size"
+        app:layout_constraintBaseline_toBaselineOf="@+id/layout_stock_value_text"
+        app:layout_constraintEnd_toStartOf="@+id/layout_number_of_items_text"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:price_per_item_binding="@{stockItem}"
+        tools:text="price per item" />
+
+    <TextView
+        android:id="@+id/layout_number_of_items_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginLeft="@dimen/small_margin"
+        android:layout_marginEnd="@dimen/small_margin"
+        android:layout_marginRight="@dimen/small_margin"
+        android:textSize="@dimen/medium_text_size"
+        app:layout_constraintBaseline_toBaselineOf="@+id/layout_stock_value_text"
+        app:layout_constraintEnd_toStartOf="@+id/layout_stock_value_text"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/layout_price_per_item_text"
+        app:number_of_items_binding="@{stockItem}"
+        tools:text="amount" />
+
+    <TextView
+        android:id="@+id/layout_stock_value_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginLeft="@dimen/small_margin"
+        android:layout_marginTop="24dp"
+        android:textSize="@dimen/medium_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/layout_number_of_items_text"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:stock_value_binding="@{stockItem}"
+        tools:text="value" />
+
+    <TextView
+        android:id="@+id/layout_item_stock_code_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stock_code_label"
+        android:textSize="@dimen/small_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/layout_item_stock_code_text"
+        app:layout_constraintStart_toStartOf="@+id/layout_item_stock_code_text"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/layout_stock_item_name_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/item_name_label"
+        android:textSize="@dimen/small_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/layout_stock_item_name_text"
+        app:layout_constraintStart_toStartOf="@+id/layout_stock_item_name_text"
+        app:layout_constraintTop_toBottomOf="@+id/layout_item_stock_code_text" />
+
+    <TextView
+        android:id="@+id/layout_stock_item_description_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/description_label"
+        android:textSize="@dimen/small_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/layout_stock_item_description_text"
+        app:layout_constraintStart_toStartOf="@+id/layout_stock_item_description_text"
+        app:layout_constraintTop_toBottomOf="@+id/layout_stock_item_name_text" />
+
+    <TextView
+        android:id="@+id/layout_price_per_item_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/price_per_item_label"
+        android:textSize="@dimen/small_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/layout_price_per_item_text"
+        app:layout_constraintStart_toStartOf="@+id/layout_price_per_item_text" />
+
+    <TextView
+        android:id="@+id/layout_number_of_items_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/amount_label"
+        android:textSize="@dimen/small_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/layout_number_of_items_text"
+        app:layout_constraintStart_toStartOf="@+id/layout_number_of_items_text" />
+
+    <TextView
+        android:id="@+id/layout_stock_value_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stock_value_label"
+        android:textSize="@dimen/small_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/layout_stock_value_text"
+        app:layout_constraintStart_toStartOf="@+id/layout_stock_value_text" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

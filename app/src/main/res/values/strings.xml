@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">Stock Tracker</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_fragment_title">About</string>
+    <string name="rules_fragment_title">Rules</string>
+    <string name="list_of_items_fragment_title">List Of Items</string>
+    <string name="new_item_fragment_title">Item Details</string>
+    <string name="rules_text">Press ADD button to create new stock item
+                            \n Press bar code button to search database
+                            \n Swipe left or right to delete stock item
+                            \n Open menu and press Delete All to remove all stock items
+                            \n Open drawer and press Stock overview to select overview mode</string>
+    <string name="about_text">This app is designed for training purpose.
+    \nObjectives:
+    \n - learn NavigationUI(menu, Up button, Drawer, Navigation Graph, Slide Animation and Safe Args)
+    \n - learn ViewModel architecture
+    \n - create ViewModel using ViewModelFactory
+    \n - implement Observer Pattern
+    \n - data binding between ViewModel and layout.xml
+    \n - data binding using binding adapter
+    \n - create Room database
+    \n - implement recycler view
+    \n - implement DiffUtil
+    \n - implement bar code scanner
+    \n - use camera to capture and store images in external storage
+    </string>
+    <string name="delete_all">Delete All</string>
+    <string name="item_stock_code">Item stock code</string>
+    <string name="item_description">Item description</string>
+    <string name="item_bar_code">Item bar code</string>
+    <string name="scan">SCAN</string>
+    <string name="number_of_items">Number of Items</string>
+    <string name="price_per_item">Price per item</string>
+    <string name="save_item">Save Item</string>
+    <string name="update_item">Update Item</string>
+    <string name="item_saved">Item saved</string>
+    <string name="item_updated">Item updated</string>
+    <string name="all_deleted">All Deleted</string>
+    <string name="stock_value_label"><u><b>stock value:</b></u></string>
+    <string name="amount_label"><u><b>amount:</b></u></string>
+    <string name="price_per_item_label"><u><b>price per item:</b></u></string>
+    <string name="description_label"><u><b>description:</b></u></string>
+    <string name="item_name_label"><u><b>item name:</b></u></string>
+    <string name="stock_code_label"><u><b>stock code:</b></u></string>
+    <string name="number_of_items_label"><u><b>number of items</b></u></string>
+    <string name="bar_code_label"><u><b>bar code</b></u></string>
+    <string name="stock_overview_drawer_menu_label">Stock overview</string>
+    <string name="rules_drawer_menu_label">Rules</string>
+    <string name="about_drawer_menu_label">About</string>
+    <string name="permission_denied">Permission denied</string>
+    <string name="corp_fail_message">Couldn\'t find activity for this operation</string>
+    <string name="cannot_find_item">Cannot find any item with this barcode</string>
+    <string name="stock_overview_fragment_title">Stock Overview</string>
+    <string name="drawer_header_image_content_description">drawer header image</string>
+    <string name="navigation_label">Navigation</string>
+    <string name="stock_overview_icon_content_description">stock overview icon content description</string>
+    <string name="stock_item_layout_icon_content_description">stock item icon</string>
+    <string name="item_details_icon_content_description">item details icon</string>
+    <string name="item_details_bar_code_image_content_description">bar code image</string>
+    <string name="enter_stock_code_here">enter stock code here</string>
+    <string name="enter_item_name_here">enter item name here</string>
+    <string name="item_name">Item name</string>
+    <string name="enter_item_description_here">enter item description here</string>
+    <string name="enter_number_of_items_here">enter number of items here</string>
+    <string name="enter_price_per_item_here">enter price per item here</string>
+    <string name="add">Add</string>
+
+
+</resources>

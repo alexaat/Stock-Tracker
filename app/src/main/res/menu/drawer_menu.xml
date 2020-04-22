@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/stockOverviewFragment"
+        android:title="@string/stock_overview_drawer_menu_label" />
+
+    <item
+        android:id="@+id/rulesFragment"
+        android:title="@string/rules_drawer_menu_label" />
+    <item
+        android:id="@+id/aboutFragment"
+        android:title="@string/about_drawer_menu_label" />
+</menu>
