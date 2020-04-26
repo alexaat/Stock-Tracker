@@ -188,15 +188,15 @@ class NewItemFragment : Fragment() {
 
                 it?.let{
                 val builder = AlertDialog.Builder(context)
-                builder.setTitle("Stock code conflict")
+                builder.setTitle(getString(R.string.stock_code_conflict))
                 val stockCode = it.itemStockCode
-                builder.setMessage("An item with $stockCode stock code already exists. Would like to continue?")
+                builder.setMessage(getString(R.string.stock_code_conflict_message,stockCode))
 
-                builder.setPositiveButton("YES"){dialog, which ->
+                builder.setPositiveButton(getString(R.string.yes)){ dialog, _ ->
                     viewModel.saveToDb(it)
                     dialog.dismiss()
                 }
-                builder.setNeutralButton("Cancel"){dialog,_ ->
+                builder.setNeutralButton(getString(R.string.cancel)){ dialog, _ ->
                     dialog.dismiss()
                 }
                 val dialog: AlertDialog = builder.create()

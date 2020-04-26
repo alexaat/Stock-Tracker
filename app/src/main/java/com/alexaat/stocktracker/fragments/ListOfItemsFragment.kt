@@ -1,6 +1,7 @@
 package com.alexaat.stocktracker.fragments
 
 import android.Manifest
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -148,7 +149,22 @@ class ListOfItemsFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
              when (item.itemId) {
-                 R.id.action_delete_all -> viewModel.clearAll()
+                 R.id.action_delete_all -> {
+
+                     val builder = AlertDialog.Builder(context)
+                     builder.setTitle(getString(R.string.delete_all_items))
+                     builder.setMessage(getString(R.string.delete_all_items_message))
+
+                     builder.setPositiveButton(getString(R.string.delete_all)){ dialog, _ ->
+                         viewModel.clearAll()
+                         dialog.dismiss()
+                     }
+                     builder.setNeutralButton(getString(R.string.cancel)){dialog,_ ->
+                         dialog.dismiss()
+                     }
+                     val dialog: AlertDialog = builder.create()
+                     dialog.show()
+                 }
              }
         return  super.onOptionsItemSelected(item)
         }

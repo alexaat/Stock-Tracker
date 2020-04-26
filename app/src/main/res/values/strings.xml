@@ -66,6 +66,10 @@
     <string name="enter_number_of_items_here">enter number of items here</string>
     <string name="enter_price_per_item_here">enter price per item here</string>
     <string name="add">Add</string>
-
-
+    <string name="stock_code_conflict">Stock code conflict</string>
+    <string name="yes">YES</string>
+    <string name="cancel">Cancel</string>
+    <string name="stock_code_conflict_message">An item with %s stock code already exists. Would like to continue?</string>
+    <string name="delete_all_items">Delete all items</string>
+    <string name="delete_all_items_message">An item will be deleted permanently. Would like to continue?</string>
 </resources>
