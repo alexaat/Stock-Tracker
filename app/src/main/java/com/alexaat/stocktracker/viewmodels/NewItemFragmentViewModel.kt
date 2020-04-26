@@ -121,7 +121,6 @@ class NewItemFragmentViewModel(private val context:Context, private val database
          }
      }
 
-
     fun onSaveButtonClicked(){
 
         stockItem?.let{
@@ -166,6 +165,11 @@ class NewItemFragmentViewModel(private val context:Context, private val database
     }
 
     fun launchCamera() {
+        imageUri?.let{
+            uiScope.launch {
+                deleteImage(it.toString())
+            }
+        }
         _checkCameraPermission.value = true
         _checkCameraPermission.value = false
     }
