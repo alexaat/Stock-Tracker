@@ -74,6 +74,11 @@ class NewItemFragmentViewModel(private val context:Context, private val database
     val showStockItemConflictDialog:LiveData<StockItem>
         get() = _showStockItemConflictDialog
 
+    private val _showItemNotSavedSnackBar = MutableLiveData(false)
+    val showItemNotSavedSnackBar:LiveData<Boolean>
+        get() = _showItemNotSavedSnackBar
+
+
     fun getItem(itemId:Long){
 
          uiScope.launch {
@@ -250,6 +255,8 @@ class NewItemFragmentViewModel(private val context:Context, private val database
                         it.itemIconUri = oldImageUri
                         oldImageUri=""
                         _stockItemIsReady.value=stockItem
+
+
                     }
                 }
             }
@@ -263,6 +270,8 @@ class NewItemFragmentViewModel(private val context:Context, private val database
                 }
             }
         }
+        _showItemNotSavedSnackBar.value = true
+        _showItemNotSavedSnackBar.value = false
     }
     /////////////////////suspend//////////////////////////
     private suspend fun deleteImage(uri: String){

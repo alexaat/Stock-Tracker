@@ -61,11 +61,9 @@ class NewItemFragment : Fragment() {
         viewModel.showSnackBarItemSavedEvent.observe(viewLifecycleOwner, Observer {
             if (it) {
                 view?.let { view ->
-                    Snackbar.make(
-                        view,
-                        resources.getString(R.string.item_saved),
-                        Snackbar.LENGTH_LONG
-                    ).show()
+                    val bar = Snackbar.make(view,resources.getString(R.string.item_saved),Snackbar.LENGTH_LONG)
+                    bar.view.setBackgroundResource(R.color.colorGreen)
+                    bar.show()
                 }
             }
         })
@@ -73,11 +71,9 @@ class NewItemFragment : Fragment() {
         viewModel.showSnackBarItemUpdatedEvent.observe(viewLifecycleOwner, Observer {
             if (it) {
                 view?.let { view ->
-                    Snackbar.make(
-                        view,
-                        resources.getString(R.string.item_updated),
-                        Snackbar.LENGTH_LONG
-                    ).show()
+                    val bar = Snackbar.make(view,resources.getString(R.string.item_updated),Snackbar.LENGTH_LONG)
+                    bar.view.setBackgroundResource(R.color.colorGreen)
+                    bar.show()
                 }
             }
         })
@@ -204,6 +200,15 @@ class NewItemFragment : Fragment() {
             }
         })
 
+        viewModel.showItemNotSavedSnackBar.observe(viewLifecycleOwner, Observer {
+            if(it){
+                this.view?.let { view ->
+                    val bar = Snackbar.make(view,getString(R.string.no_changes_saved),Snackbar.LENGTH_SHORT)
+                    bar.view.setBackgroundResource(R.color.colorPink)
+                    bar.show()
+                }
+            }
+        })
 
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -211,7 +216,7 @@ class NewItemFragment : Fragment() {
              findNavController().navigateUp()
             }
         }
-       requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
         return binding.root
     }

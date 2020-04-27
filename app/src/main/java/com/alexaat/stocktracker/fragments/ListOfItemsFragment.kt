@@ -115,6 +115,15 @@ class ListOfItemsFragment : Fragment() {
             }
         })
 
+        viewModel.showItemDeletedSnackBar.observe(viewLifecycleOwner, Observer {
+            if(it){
+                this.view?.let{view->
+                    val bar = Snackbar.make(view,getString(R.string.item_deleted),Snackbar.LENGTH_SHORT)
+                    bar.show()
+                }
+            }
+        })
+
         return binding.root
     }
 

@@ -38,6 +38,11 @@ class ListOfItemsFragmentViewModel(private val context: Context, private val dat
         get() = _navigateToBarCodeScanner
 
 
+    private val _showItemDeletedSnackBar = MutableLiveData(false)
+    val showItemDeletedSnackBar:LiveData<Boolean>
+        get() = _showItemDeletedSnackBar
+
+
     fun onItemClicked(itemId: Long){
         _navigateToNewItemFragment.value = itemId
     }
@@ -108,6 +113,8 @@ class ListOfItemsFragmentViewModel(private val context: Context, private val dat
             uiScope.launch {
                 delete(it.itemId)
                 deleteImage(it.itemIconUri)
+                _showItemDeletedSnackBar.value = true
+                _showItemDeletedSnackBar.value = false
             }
         }
     }

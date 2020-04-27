@@ -72,4 +72,6 @@
     <string name="stock_code_conflict_message">An item with %s stock code already exists. Would like to continue?</string>
     <string name="delete_all_items">Delete all items</string>
     <string name="delete_all_items_message">An item will be deleted permanently. Would like to continue?</string>
+    <string name="no_changes_saved">No changes saved</string>
+    <string name="item_deleted">Item deleted</string>
 </resources>
